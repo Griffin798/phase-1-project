@@ -1,0 +1,54 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a modern sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.hdqwalls.com/wallpapers/rick-and-morty-season-7-ce.jpg'); /* Replace 'rick_and_morty_background.jpg' with the path to your high-resolution image */
+    background-size: cover;
+    background-position: center;
+    color: green; /* Set text color to white for better contrast */
+}
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5em; /* Increase font size for the header */
+    text-shadow: 2px 2px 4px rgba(245, 5, 5, 0.881); /* Add a text shadow for better readability */
+}
+#characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+.character {
+    position: relative;
+    border: 1px solid transparent;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: rgba(14, 15, 16, 0.901); /* Add a translucent background color */
+    box-shadow: 0px 2px 5px rgba(5, 16, 229, 0.889);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: glow 1.5s infinite alternate; /* Add animation for glowing effect */
+}
+.character:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 20px 5px rgba(222, 12, 12, 0.7); /* Change box-shadow color and size on hover */
+}
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 10px 5px rgba(234, 9, 9, 0.7)
+    }
+    100% {
+        box-shadow: 0px 0px 20px 10px rgba(218, 10, 10, 0.7);
+    }
+}
+.character img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.character p {
+    margin: 5px 0;
+}

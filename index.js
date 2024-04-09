@@ -1,40 +1,34 @@
-const data = {
-    "info": {
-      "count": 826,
-      "pages": 42,
-      "next": "https://rickandmortyapi.com/api/character?page=2",
-      "prev": null
-    },
-    "results": [
-      {
-        "id": 1,
-        "name": "Rick Sanchez",
-        "status": "Alive",
-        "species": "Human",
-        "type": "",
-        "gender": "Male",
-        "origin": {
-          "name": "Earth (C-137)",
-          "url": "https://rickandmortyapi.com/api/location/1"
-        },
-        "location": {
-          "name": "Citadel of Ricks",
-          "url": "https://rickandmortyapi.com/api/location/3"
-        },
-        "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        "episode": [
-          "https://rickandmortyapi.com/api/episode/1",
-          "https://rickandmortyapi.com/api/episode/2",
-          "https://rickandmortyapi.com/api/episode/3",
-          // Rest of the episodes
-        ],
-        "url": "https://rickandmortyapi.com/api/character/1",
-        "created": "2017-11-04T18:48:46.250Z"
-      },
-      // More characters...
-    ]
-  };
-  
-  // Example: Accessing the first character's name
-  const firstName = data.results[0].name;
-  console.log(firstName); // Output: Rick Sanchez
+async function fetchCharacters() {
+    const response = await fetch('https://rickandmortyapi.com/api/character');
+    const data = await response.json();
+    const characters = data.results;
+
+    const charactersContainer = document.getElementById('characters');
+
+    characters.forEach(character => {
+        const characterDiv = document.createElement('div');
+        characterDiv.classList.add('character');
+
+        const img = document.createElement('img');
+        img.src = character.image;
+        img.alt = character.name;
+
+        const name = document.createElement('p');
+        name.textContent = character.name;
+
+        const status = document.createElement('p');
+        status.textContent = `Status: ${character.status}`;
+
+        const species = document.createElement('p');
+        species.textContent = `Species: ${character.species}`;
+
+        characterDiv.appendChild(img);
+        characterDiv.appendChild(name);
+        characterDiv.appendChild(status);
+        characterDiv.appendChild(species);
+
+        charactersContainer.appendChild(characterDiv);
+    });
+}
+
+fetchCharacters();
